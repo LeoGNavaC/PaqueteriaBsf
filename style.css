@@ -1,0 +1,415 @@
+
+body 
+{ 
+    background-image: url('image/portada2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+
+    
+}
+h1
+{
+color:rgb(146, 228, 108);
+}
+h2
+{
+    
+    font-family: system-ui;
+    font-size: 2rem;
+    color: #1b1a1b;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #cec6ca, 0 0 20px #dfd7db, 0 0 25px #807f7f, 0 0 30px #6d6b6c, 0 0 35px #4c4a4b;
+
+    animation: neon 1.5s infinite alternate;
+}
+	/*Login*/
+.FormCajaLogin
+{
+    margin: 0;
+    padding: 0;
+    display:grid ;
+    place-items: center  ; /* Para centrar el contenido de la cuadrícula */
+    height: 110vh; /* Ajustamos la altura del cuerpo para que llene toda la ventana */
+    background-image: url('image/portada1.png');
+    background-size: cover; 
+
+}
+.grupo-entradas{
+    position: absolute;
+    display: grid;
+    width: 90%; /* Ajuste el ancho para dispositivos móviles */
+    max-width: 400px; /* Establece un ancho máximo */
+    transition: .5s;
+
+}
+@media (max-width: 768px) {
+    .FormCajaLogin {
+        height: 100vh; /* Ajuste la altura para pantallas más pequeñas */
+        background-size: cover; /* Asegura que la imagen de fondo cubra toda la pantalla */
+    }
+
+    .grupo-entradas {
+        width: 80%; /* Ajuste el ancho para pantallas de tamaño medio */
+    }
+}
+
+@media (max-width: 480px) {
+    .FormCajaLogin {
+        height: 100vh; /* Asegura que la altura sea adecuada para pantallas pequeñas */
+        background-size: cover;
+    }
+
+    .grupo-entradas {
+        width: 90%; /* Ajuste el ancho para pantallas pequeñas */
+        max-width: 300px; /* Reduzca el ancho máximo para pantallas pequeñas */
+    }
+}
+.FormLogin
+{
+    background-color: rgba(0,0,0,0.5);
+    margin: 3em auto auto auto;
+    border-radius: 6px;
+    color: #000;
+    border: 0.1em solid rgb(28, 211, 83);
+    width: 90%; /* Usar un porcentaje para que se ajuste mejor a diferentes tamaños de pantalla */
+    max-width: 400px; /* Ancho máximo para pantallas grandes */
+    height: 550px;
+    position: relative;
+    padding: 2px;
+    overflow: hidden; 
+
+/* Media queries para diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    .FormLogin {
+        width: 80%; /* Ajuste el ancho para pantallas de tamaño medio */
+        right: auto; /* Deshacer la posición relativa */
+    }
+}
+
+@media (max-width: 480px) {
+    .FormLogin {
+        width: 90%; /* Ajuste el ancho para pantallas pequeñas */
+        max-width: 300px; /* Reduzca el ancho máximo para pantallas pequeñas */
+        height: auto; /* Ajustar la altura automáticamente si es necesario */
+        right: auto; /* Deshacer la posición relativa */
+    }
+}
+
+
+
+}
+
+.TextoCajas
+{
+
+font-weight: bold;
+margin-top:4%;
+margin-bottom:4%;
+color:#8ff094;
+text-align:left;
+}
+
+.CajaTexto{
+width: 80%;
+padding: 10px;
+font-size:1em;
+border-radius:5px;
+border:1px solid black;
+color:black;
+}
+
+.BtnRegistrar
+{
+width: 80%;
+text-decoration:none;
+padding: 10px 30px;
+cursor: pointer;
+border: 0;
+border-radius: 10px;
+border:1px solid green;
+font-size:18px;
+color:white;
+background-color: green;
+font-weight: bold;
+margin-bottom:5%;
+margin-top:7%;
+}
+
+.BtnLogin
+{
+width: 80%;
+text-decoration:none;
+padding: 10px 30px;
+cursor: pointer;
+border: 0;
+border-radius: 10px;
+border:1px solid black;
+font-size:18px;
+color:white;
+background-color: #1fa748;
+font-weight: bold;
+margin-top:7%;
+margin-bottom:5%;
+}
+
+.botondeintercambiar{
+width: 240px;
+margin: 35px auto;
+position: relative;
+box-shadow: 0 0 6px 0.5px black;
+border-radius: 30px;
+}
+.botoncambiarcaja{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+	font-weight: bold;
+	font-size:16px;
+}
+#btnvai{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 130px;
+    height: 100%;
+	background-color: #1C62C1;
+    border-radius: 30px;
+	transition: .5s;
+}
+
+#frmlogin{
+	bottom:10%;
+    left: 50px;
+}
+#frmregistrar{
+    left: 450px;
+}
+
+	/*Panel*/
+.BarraLateral {
+
+    background-image: url(image/ima4.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+position: fixed;
+top: 0;
+left: 0;
+width: 200px;
+height: 100%;
+background-color: #20c472;
+box-sizing: border-box;
+text-align:center;
+}
+.BarraLateral ul {
+list-style: none;
+padding: 0;
+margin-top:10%; 
+font-size:18px;			
+}
+
+.BarraLateral li 
+{
+text-align:left;
+padding: 12px 10px;
+background-color: rgba(0, 0, 0, .5);
+color:#d9dbe0;
+}
+
+.BarraLateral a 
+{
+color: white;
+text-decoration: none;
+}
+		
+.ContenedorPrincipal 
+{
+margin-left: 200px;
+padding: 20px;
+box-sizing: border-box;
+text-align:center;
+}
+		
+@media (max-width: 768px) 
+	{
+.BarraLateral 
+{
+width: 100%;
+height: auto;
+position: relative;
+}
+
+.ContenedorPrincipal 
+{
+margin-left: 0;
+}			
+	}
+
+	/*Tabla*/
+table
+{
+border-collapse: collapse;
+width: 100%; 
+margin: 0 auto;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+color:#000;
+}
+
+
+th
+{
+background-color: black;
+color: white;
+}
+
+th, td, td 
+{
+padding: 10px;
+text-align: center;
+border-bottom: 1px solid #dddddd;
+}
+
+.ContenedorTabla 
+{
+margin-left: auto;
+margin-right: auto;
+max-width:1960px;
+width: 100%; 
+	
+}
+.ContenedorTabla1 {
+    margin-left: auto;
+margin-right: auto;
+max-width:1200px;
+width: 100%;
+
+}
+.contador{
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
+    color: #000000;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #27ae7a, 0 0 40px #00e608, 0 0 50px #00e62a;
+
+   
+}
+.BotonesTeam,.BotonesTeam1,.BotonesTeam2,.BotonesTeam3,.BotonesTeam4,.BotonesTeam5
+{	
+text-align:center;
+display: inline-block;
+background:#0258b6;
+padding: 6px 10px;
+border-radius:6px;
+text-decoration: none;
+color:white;
+border:2px solid black;
+cursor:pointer;
+font-size: 16px;
+}
+.BotonesTeam1,.BotonesTeam2,.BotonesTeam3
+{
+transition: transform 250ms;
+width:8%;
+background:green;
+}
+.BotonesTeam2
+{
+background:#185ca7;
+}
+.BotonesTeam3
+{
+background:#cf055f;
+}
+.BotonesTeam4
+{
+background:#11757A;
+}
+.BotonesTeam5
+{
+transition: transform 250ms;
+background:#047559;
+}
+.BotonesTeam1:hover,.BotonesTeam2:hover,.BotonesTeam3:hover,.BotonesTeam5:hover
+{
+transform: translateY(-10px);
+}
+.ContBuscar
+{
+overflow: hidden;
+padding-top:1%;
+}
+.CajaTextoBuscar
+{
+width: 300px;
+padding: 10px;
+font-size:1em;
+border-radius:5px;
+border:1px solid black;
+color:black;
+}
+
+
+	/*CajaPopUp*/
+.contenedor_popup 
+{
+top: 50%;
+left: 50%;
+position: absolute;
+transform: translate(-50%,-50%);
+width:400px; 
+transition: all 0.2s;
+background-color:white;
+}
+
+.caja_popup2 
+{
+display: block;
+position: absolute;
+padding:0;
+background-color:rgba(0, 0, 0, 0.5); 
+width:100%;
+height:100%;
+}
+
+.caja_popup3 
+{
+display: grid;
+position: center;
+padding:0;
+background-color:rgba(212, 20, 20, 0.5); 
+width:0%;
+height:0%;
+}
+
+.contenedor_popup1
+{
+top: 51%;
+left: 25%;
+position: absolute;
+transform: translate(-50%,-50%);
+width:500px; 
+transition: all 0.2s;
+background-color:white;
+border:0.5em solid rgb(15, 118, 46);
+}
+
+.contenedor_popup3{
+    top: 48%;
+left: 54%;
+position: absolute;
+transform: translate(-50%,-50%);
+width:500px; 
+transition: all 0.2s;
+background-color:white;
+border:0.5em solid rgb(15, 118, 46);
+
+
+}
+
+td option {
+    color: red; /* Cambia "red" al color que desees */
+  }
