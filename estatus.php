@@ -1,0 +1,148 @@
+<!--Codigo para entregar el correo (si se entrego al titular)-->
+<?php 
+	include("conexion.php");
+	include("datos_bsf.php");
+
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\Exception;
+
+
+	require 'PHPMailer/Exception.php';
+	require 'PHPMailer/PHPMailer.php';
+	require 'PHPMailer/SMTP.php';
+
+
+	$pagina = $_GET['pag'];
+	$id = $_GET['id'];
+
+	$querybuscar = mysqli_query($conn, "SELECT * FROM productos WHERE id = '$id'");
+		
+	while($mostrar = mysqli_fetch_array($querybuscar)){	
+		$proid 		= $mostrar['id'];
+		$pronomso	= $mostrar['nombresocio'];
+		$prodes	    = $mostrar['numeroguia'];
+		$procat	    = $mostrar['paque'];
+		$proest		= $mostrar['estatus'];
+		$proent		= $mostrar['fecha_entrega'];
+		
+	}
+?>
+
+<html>
+	<body>
+		<div class="caja_popup4">
+			<form class="contenedor_popup3" method="POST">
+				<table>
+					<tr><th colspan="2">Estatus del Paquete</th></tr>	
+					<tr> 			
+						<tr> 		
+							<td><b>Id: </b></td>
+							<td><input class="CajaTexto" type="number" name="id" value="<?php echo $proid;?>" readonly></td>
+						</tr>
+
+						<tr> 
+						<td><b>N°Guía: </b></td>
+						<td><?php echo $prodes;?></td>
+					</tr>
+
+					<tr> 
+						<td><b><Param>Paqueteria</Param>: </b></td>
+						<td><?php echo $procat;?></td>
+					</tr>
+					
+						<tr>
+							<td><b>Fue: </b></td>
+							<td>
+								<select name="fue" class="CajaTexto">
+									<option color>Entregado</option>
+								</select>
+							</td>	
+						</tr>
+				
+						<tr> 
+							<td><b>Fecha/Entrega: </b></td>
+							<td><input class="CajaTexto" type="datetime-local" step="any" name="fecha" value="<?php echo $proent; ?>" required ></td>
+						</tr>
+
+					</tr>
+
+						<tr>
+							<td><b>Correo</b></td>
+							<td>
+								<input type="text" name="txtresiprueba" class="CajaTexto" value="<?php echo $pronomso; ?>">
+								<select name="email" class='CajaTexto' style="display:none">
+									<?php
+										$qrcategoria = mysqli_query($conn,"SELECT * FROM residentes WHERE name = '$pronomso'");
+										while($mostrarresi = mysqli_fetch_array($qrcategoria)){
+											echo '<option>' . $mostrarresi['email'] . '</option>';
+										}
+									?>
+								</select>
+							</td>
+						</tr>
+
+						<td colspan="2" >
+							<input class='BotonesTeam' type="submit" name="btnregistrar" value="Aceptar" onClick="javascript: return confirm('¿Verifico que los datos sean correctos?');">
+							<?php echo "<a class='BotonesTeam' href=\"datos_bsf.php?pag=$pagina\">Cancelar</a>";?>&nbsp;
+							
+<!--Crear la ventana para envíar el correo al residente-->
+							
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>
+
+<?php
+		
+		if(isset($_POST['btnregistrar'])){
+			$proid1 	= $_POST['id'];    
+			$proest1	= $_POST['fue']; // Cambié la variable $proest a $proest1
+			$proent1	= $_POST['fecha'];
+			$procorreoS = $_POST['email']; //correo de los socios
+			$prodes1 = $_POST['gia'];
+			$procat1 = $_POST['paque'];
+			
+			//$procuerpoCorreo	= "Para: $procorreoS" . "\t\n" . " Su Id: $proid1" . " Fue: $proest1" . " Fecha: $proent1" . phpversion(); //Cuerpo del correo
+			$procuerpoCorreo  = "<p style='background-color: #2424ec; color: #333; font-family: 'Georgia', serif; font-size: 18px; line-height: 1.6; padding: 10px; border-left: 30px solid #6fb119; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin: 20px 0;'><strong style='color: #b45508;'><em><u>Para:</u></em></strong>              $procorreoS </p>";
+			$procuerpoCorreo .= "<p style='background-color: #f4f4f9; color: #333; font-family: 'Georgia', serif; font-size: 18px; line-height: 1.6; padding: 10px; border-left: 10px solid #6fb119; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin: 20px 0;'><strong style='color: #b45508;'><em><u>Id de seguimiento:</u></em></strong> $proid1 </p>";
+			$procuerpoCorreo .= "<p style='background-color: #f4f4f9; color: #333; font-family: 'Georgia', serif; font-size: 18px; line-height: 1.6; padding: 10px; border-left: 10px solid #6fb119; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin: 20px 0;'><strong style='color: #b45508;'><em><u>Numero de guia:</u></em></strong>    $prodes </p>";
+			$procuerpoCorreo .= "<p style='background-color: #f4f4f9; color: #333; font-family: 'Georgia', serif; font-size: 18px; line-height: 1.6; padding: 10px; border-left: 10px solid #6fb119; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin: 20px 0;'><strong style='color: #b45508;'><em><u>Paqueteria:</u></em></strong>        $procat </p>";
+			$procuerpoCorreo .= "<p style='background-color: #f4f4f9; color: #333; font-family: 'Georgia', serif; font-size: 18px; line-height: 1.6; padding: 10px; border-left: 10px solid #6fb119; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin: 20px 0;'><strong style='color: #b45508;'><em><u>Su paquete fue:</u></em></strong>    $proest1 </p>";
+			$procuerpoCorreo .= "<p style='background-color: #f4f4f9; color: #333; font-family: 'Georgia', serif; font-size: 18px; line-height: 1.6; padding: 10px; border-left: 10px solid #6fb119; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin: 20px 0;'><strong style='color: #b45508;'><em><u>Fecha:</u></em></strong>             $proent1 </p>";
+			$procuerpoCorreo .= "<p style='background-color: #f4f4f9; color: #333; font-family: 'Georgia', serif; font-size: 18px; line-height: 1.6; padding: 10px; border-left: 10px solid #6fb119; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin: 20px 0;'>" . phpversion() . "</p><br>";
+
+			$proAsunto	= "Su paquete fue entregado con exito";
+			
+			$mail = new PHPMailer();
+			$mail->isSMTP();
+			$mail->Host = 'smtp.gmail.com'; // Cambia esto por el host SMTP de Gmail
+			$mail->SMTPAuth = true;
+			$mail->Username = 'paqueteria@acbsf.org.mx'; // Cambia esto por tu dirección de correo electrónico de Gmail
+			$mail->Password = 'enjd dffp fcxo gmnd'; // Cambia esto por tu contraseña de Gmail o por una contraseña de aplicación si usas autenticación de dos factores
+			$mail->SMTPSecure = 'tls';
+			$mail->Port = 587;
+	
+			$mail->setFrom('paqueteria@acbsf.org.mx', 'DeliveryBSF'); // Cambia esto por tu dirección de correo electrónico y tu nombre
+			$mail->addAddress($procorreoS); // Agrega el destinatario
+	
+			$mail->isHTML(true);
+			$mail->Subject = $proAsunto;
+			$mail->Body = $procuerpoCorreo;
+	
+			if($mail->send()) {
+				echo "Correo enviado correctamente";
+			} else {
+				echo "Error al enviar el correo: " . $mail->ErrorInfo;
+			}
+	
+			$querymodificar = mysqli_query($conn, "UPDATE productos SET numeroguia='$prodes',paque='$procat',estatus='$proest1',fecha_entrega='$proent1' WHERE id = '$proid1'");
+			echo "<script>window.location= 'datos_bsf.php?pag=$pagina' </script>";
+		}
+	?>
+
+<!--Nota: para poder enviar los datos de un formulario a una base de datos se usa el name no el id-->
+<!--action="https://formsubmit.co/leonava988@gmail.com"   ********************  Esto sirve para mandar el correo-->
+

@@ -1,0 +1,165 @@
+body, h2, table, td, th {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .ContenedorPrincipal {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .ContenedorTabla {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .ContBuscar {
+    margin-bottom: 20px;
+  }
+  
+  .CajaTextoBuscar {
+    padding: 10px;
+    margin-right: 10px;
+    width: calc(100% - 120px); /* Ajusta el ancho */
+  }
+  
+  .BotonesTeam {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 2.9em;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  /* Estilos para botones */
+  .BotonesTeam1, .BotonesTeam2, .BotonesTeam3 {
+    display: inline-block;
+    padding: 15px 20px; /* Aumenta el tamaño del padding para hacer los botones más grandes */
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente */
+  }
+  
+  .BotonesTeam1 {
+    background-color: #33721a; /* Azul */
+  }
+  
+  .BotonesTeam2 {
+    background-color: #0c0e0c; /* Verde */
+  }
+  
+  .BotonesTeam3 {
+    background-color: #a81322; /* Rojo */
+  }
+  
+  /* Media queries para hacer la tabla responsive */
+  @media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  
+    thead tr {
+      display: none;
+    }
+  
+    tr {
+      margin-bottom: 10px;
+    }
+  
+    td {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 50%;
+      position: relative;
+    }
+  
+    td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 10px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+  
+    .BotonesTeam {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  .caja_popup2 {
+    width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  position: absolute; /* Cambia a absolute para permitir mover la ventana */
+  top: 50px; /* Ajusta según sea necesario */
+  left: 50px; /* Ajusta según sea necesario */
+  background: white; /* Añadir fondo blanco para visibilidad */
+  border: 1px solid #ddd; /* Añadir borde para visibilidad */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Añadir sombra para visibilidad */
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  /* Media queries para hacer la página responsive */
+@media (max-width: 600px) {
+  .caja_popup2 {
+    padding: 10px;
+  }
+
+  th, td {
+    display: block;
+    width: 100%;
+    text-align: right;
+  }
+
+  td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+
+  td img {
+    display: block;
+    margin: 10px auto;
+  }
+}
+
+
+
+.BotonesTeam:hover {
+  background-color: #0056b3;
+}
