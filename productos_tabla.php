@@ -22,7 +22,7 @@
 				if(isset($_POST['btnbuscar'])){//se realizo modificacion en la consulta
 					$buscar = $_POST['txtbuscar'];
 					$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.nombre,pro.numeroguia,pro.fecha,pro.paque,pro.nombresocio,pro.direccion,pro.orientacion,pro.foto_nombre,pro.comentarios,cat.nombre as categoria 
-					FROM productos pro INNER JOIN categoria_productos cat ON pro.categoria_id=cat.id WHERE pro.direccion LIKE '%".$buscar."%' OR pro.numeroguia LIKE '%".$buscar."%'");
+					FROM productos pro INNER JOIN categoria_productos cat ON pro.categoria_id=cat.id WHERE pro.direccion LIKE '%".$buscar."%' OR pro.numeroguia LIKE '%".$buscar."%'");//se realizo modificacion
 				}
 				else{//se realizo modificacion en la consulta
 					$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.nombre,pro.numeroguia,pro.fecha,pro.paque,pro.nombresocio,pro.direccion,pro.orientacion,pro.foto_nombre,pro.comentarios,cat.nombre as categoria 

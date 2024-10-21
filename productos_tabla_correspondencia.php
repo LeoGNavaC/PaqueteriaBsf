@@ -22,7 +22,7 @@
 				if(isset($_POST['btnbuscar'])){//se realizo modificacion en la consulta
 					$buscar = $_POST['txtbuscar'];
 					$sqlusu = mysqli_query($conn, "SELECT id,nombre,numeroguia,fecha,paque,nombresocio,direccion,orientacion,comentarios
-					FROM productos_correspondencia WHERE numeroguia LIKE '%".$buscar."%' OR direccion LIKE '%".$buscar."%'");
+					FROM productos_correspondencia WHERE numeroguia LIKE '%".$buscar."%' OR direccion LIKE '%".$buscar."%'");//Se realizo modificacion
 				}
 				else{//se realizo modificacion en la consulta
 					$sqlusu = mysqli_query($conn, "SELECT id,nombre,numeroguia,fecha,paque,nombresocio,direccion,orientacion,comentarios 

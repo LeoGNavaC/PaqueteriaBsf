@@ -21,7 +21,7 @@
  				if(isset($_POST['btnbuscar'])){
 					$buscar = $_POST['txtbuscar'];
 
- 					$sqlcat = mysqli_query($conn, "SELECT * FROM categoria_productos WHERE nombre = '".$buscar."'");
+ 					$sqlcat = mysqli_query($conn, "SELECT * FROM categoria_productos WHERE nombre = '".$buscar."'");//Se realizo modificacion
 				} else {
  					$sqlcat = mysqli_query($conn, "SELECT * FROM categoria_productos ORDER BY id ASC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);
 				}
