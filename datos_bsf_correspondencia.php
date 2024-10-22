@@ -26,7 +26,7 @@
 					$sqlbus->bind_param("ss",$parambus,$parambus);
 					$sqlbus->execute();*/
 					$buscar = $_POST['txtbuscar'];
-					$sqlusu = mysqli_query($conn, "SELECT id,nombre,numeroguia,fecha,paque,nombresocio,direccion,orientacion,comentarios,estatus,fecha_entrega FROM productos_correspondencia WHERE numeroguia LIKE '%".$buscar."%'");//***Se realizo modificacion */
+					$sqlusu = mysqli_query($conn, "SELECT id,nombre,numeroguia,fecha,paque,nombresocio,direccion,orientacion,comentarios,estatus,fecha_entrega FROM productos_correspondencia WHERE numeroguia LIKE '%".$buscar."%' OR direccion LIKE '%".$buscar."%'");//***Se realizo modificacion */
 
 				}
 				else{//***********SE REALIZO MODIFICACION */
@@ -51,7 +51,7 @@
 							<a href="datos_bsf_correspondencia.php" class="BotonesTeam">Inicio</a>
 							<a href="productos_exportar_correspondencia.php" class="BotonesTeam">Exportar</a>
 							<input class="BotonesTeam" type="submit" value="Buscar" name="btnbuscar">
-							<input class="CajaTextoBuscar" type="text" name="txtbuscar"  placeholder="Ingresar datos de busqueda" autocomplete="off" >
+							<input class="CajaTextoBuscar" type="text" name="txtbuscar"  placeholder="Ingresar N° de guía o nombre del socio" autocomplete="off" >
 						</div>
 						<div style="float:right;">
 							
@@ -64,13 +64,14 @@
 							<th>Nombre del repartidor</th>
 							<th>N° Guía</th>
 							<th>Fecha/recepción</th>
-							<th>Paqueteria(empresa)</th>
+							<th>Empresa</th>
 							<th>Nombre del titular</th>
 							<th>Dirección</th>
 							<th>Orientacion</th>
 							<th>Comentarios</th>
 							<th>Estatus</th>
 							<th>Fecha/entrega</th>
+							<th>Acción</th>
 						</tr>
 		
 						<?php
@@ -98,6 +99,11 @@
 									}
 									//echo "<td style='width:50%'>".$mostrar['estatus']."</td>";
 									echo "<td>".$mostrar['fecha_entrega']."</td>";
+									echo "<td style='width:25%'>
+										<a class='BotonesTeam1' href=\"productos_ver2.php?id=$mostrar[id]&pag=$pagina\">&#x1F50D;</a> 
+										<a class='BotonesTeam2' href=\"estatus.php?id=$mostrar[id]&pag=$pagina\">&#x2714;</a>
+										<a class='BotonesTeam3' href=\"estatus2.php?id=$mostrar[id]&pag=$pagina\">&#x2718;</a>
+									</td>";  
 								echo "</tr>";
 							}
 						?>

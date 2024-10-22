@@ -46,7 +46,7 @@
 							<a href="productos_tabla.php" class="BotonesTeam">Inicio</a>
 							<a href="productos_exportar.php" class="BotonesTeam">Exportar</a>
 							<input class="BotonesTeam" type="submit" value="Buscar" name="btnbuscar">
-							<input class="CajaTextoBuscar" type="text" name="txtbuscar"  placeholder="Ingresar el n° de guía o nombre del socio que deseé buscar" autocomplete="off" >
+							<input class="CajaTextoBuscar" type="text" name="txtbuscar"  placeholder="Ingresar N° de guía o nombre del socio" autocomplete="off" >
 						</div>
 						<div style="float:right;">
 							<?php echo "<a class='BotonesTeam5' href=\"productos_registrar.php?pag=$pagina\">Agregar Datos</a>";?>

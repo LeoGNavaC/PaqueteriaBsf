@@ -44,7 +44,7 @@
 							<a href="productos_tabla_correspondencia.php" class="BotonesTeam">Inicio</a>
 							<a href="productos_exportar_correspondencia.php" class="BotonesTeam">Exportar</a>
 							<input class="BotonesTeam" type="submit" value="Buscar" name="btnbuscar">
-							<input class="CajaTextoBuscar" type="text" name="txtbuscar"  placeholder="Ingresar el n° de guía que deseé buscar" autocomplete="off" >
+							<input class="CajaTextoBuscar" type="text" name="txtbuscar"  placeholder="Ingresar N° de guía o nombre del socio" autocomplete="off" >
 						</div>
 						<div style="float:right;">
 							<?php echo "<a class='BotonesTeam5' href=\"productos_registrar_correspondencia.php?pag=$pagina\">Agregar Datos</a>";?>
@@ -57,7 +57,7 @@
 							<th>Nombre del repartidor</th>
 							<th>N° Guía</th>
 							<th>Fecha:A/M/D </th>
-							<th>Paqueteria(empresa)</th>
+							<th>Empresa</th>
 							<th>Nombre del titular</th><!--Se realizo modificacion-->
 							<th>Dirección</th>
 							<th>Orientacion</th>
