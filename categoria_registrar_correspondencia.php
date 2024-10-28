@@ -20,7 +20,7 @@
 				<table>
 					<tr><th colspan="2" >Agregar Paqueteria</th></tr>
 					<tr><!--Nombre de la paqueteria-->
-						<td>Nombre de la paqueteria</td>
+						<td>Nombre de la correspondencia</td>
 						<td><input type="text" name="txtnom" autocomplete="off" class="CajaTexto" required></td>
 					</tr>
 					<tr><!--Boton para poder confirmar--> 	
