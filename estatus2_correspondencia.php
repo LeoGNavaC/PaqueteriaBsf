@@ -79,14 +79,11 @@
 			$proid1 	= $_POST['id'];    
 			$proest1	= $_POST['fue']; // Cambié la variable $proest a $proest1
 			$proent1	= date("Y-m-d H:i:s");
-			$procorreoS = $_POST['email']; //correo de los socios
-			$prodes1 = $_POST['gia'];
-			$procat1 = $_POST['paque'];
 	
-			$querymodificar = mysqli_query($conn, "UPDATE productos_correspondencia SET numeroguia='$prodes',paque='$procat',estatus='$proest1',fecha_entrega='$proent1' WHERE id = '$proid1'");
+			$querymodificar = mysqli_query($conn, "UPDATE productos_correspondencia SET estatus='$proest1',fecha_entrega='$proent1' WHERE id = '$proid1'");
 			echo "<script>window.location= 'datos_bsf_correspondencia.php?pag=$pagina' </script>";//***************Se realizo modificacion */
 		}
-	?>
+?>
 
 <!--Nota: para poder enviar los datos de un formulario a una base de datos se usa el name no el id-->
 <!--action="https://formsubmit.co/leonava988@gmail.com"   ********************  Esto sirve para mandar el correo-->
