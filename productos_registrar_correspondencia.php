@@ -185,7 +185,7 @@
                     <tr>
                         <td><b>Comentarios</b></td>
                         <td>
-                            <textarea class="CajaTexto" type="text" name="txtcom" style="width: 383px; height: 201px;"  required></textarea>
+                            <textarea class="CajaTexto" type="text" name="txtcom" style="width: 383px; height: 201px;"></textarea>
                         </td>
                     </tr>
                     
