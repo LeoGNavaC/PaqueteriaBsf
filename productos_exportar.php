@@ -11,12 +11,12 @@
     }
 
     // Consulta SQL para obtener los datos de la tabla
-    $sql = "SELECT * FROM productos";
+    $sql = "SELECT id,nombre,numeroguia,fecha,paque,nombresocio,direccion,orientacion,comentarios,estatus,fecha_entrega FROM productos";
     $result = $conn->query($sql);
 
 
     // Crear el archivo Excel
-    $filename = "Datos requeridos_" . date('YmdHis') . ".xls";
+    $filename = "Datos requeridos_" . date('Y-m-d H:i:s') . ".xls";
     echo $filename;
     
 
@@ -49,6 +49,6 @@
 
     // Cerrar la conexión a la base de datos
     $conn->close();
-    echo "<script>window.location= 'productos_tabla.php?pag=$pagina'</script>";
+    "<script>window.location= 'productos_tabla.php'</script>";
 ?>
 
