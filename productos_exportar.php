@@ -16,6 +16,7 @@
 
 
     // Crear el archivo Excel
+    date_default_timezone_set('America/Mexico_City');
     $filename = "Datos requeridos_" . date('Y-m-d H:i:s') . ".xls";
     echo $filename;
     
