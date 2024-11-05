@@ -70,7 +70,7 @@
                         <th colspan="2">Agregar datos</th><!--**************se realizo modificacion-->
                     </tr>
                     
-                    <tr><!--esta es una modificacion, yo lo deje para ver si me daba el nombre del usuario-->
+                    <tr style="display: none;"><!--esta es una modificacion, yo lo deje para ver si me daba el nombre del usuario-->
                         <td><b>Nombre del repartidor: </b></td><!--Se realizo modificacion en todo el bloque-->
                         <td>
                             <select name="txtnom" class="CajaTexto" required readonly><!--**********Se realizo modificacion-->
