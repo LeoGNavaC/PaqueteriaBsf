@@ -39,7 +39,7 @@
                     </tr>
 
                     <tr> 
-                        <td><b>Paqueteria: </b></td>
+                        <td><b>Empresa de correspondencia: </b></td>
                         <td><?php echo $procat;?></td>
                     </tr>
 
