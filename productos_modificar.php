@@ -84,7 +84,7 @@
 										echo '<option>Victor Acosta</option>';
 										echo '<option>Raul Zarate</option>';
 										echo '<option>Martin Ortiz</option>';
-										echo '<option>Antonio Gomez</option>';
+										echo '<option>Antonio Gomez</option>';	
 									}
 								?> 
 							</select>

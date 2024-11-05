@@ -42,7 +42,6 @@
 
 		$queryadd	= mysqli_query($conn, "INSERT INTO categoria_productos(nombre) VALUES('$vainom')");
 		
-		
 		if(!$queryadd)
 		{
 			echo "<script>alert('Id duplicado, intenta otra vez');</script>";
@@ -53,4 +52,3 @@
 		}
 	}
 ?>
-

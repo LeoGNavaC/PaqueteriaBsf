@@ -81,7 +81,7 @@ numeroguia<!--En esta pagina podemos visualizar las caracteristicas del dato, pe
 						<td><?php echo $procom;?></td>
 
 					</tr>
-					<tr>
+<tr>
 
 				
 						<td colspan="2">

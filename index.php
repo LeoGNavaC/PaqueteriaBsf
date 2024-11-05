@@ -4,7 +4,7 @@
     include('conexion.php');
     if(isset($_SESSION['usuarioingresando']))
     {
-        header('location: productos_tabla.php');
+    header('location: productos_tabla.php');
     }
 ?>
 
@@ -71,4 +71,3 @@
     </body>
     <script src="boton_formulario.js"></script>
 </html>
-

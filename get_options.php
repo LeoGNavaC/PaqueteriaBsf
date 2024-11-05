@@ -35,4 +35,3 @@
         echo "Error: Falta el parámetro 'name'";
     }
 ?>
-

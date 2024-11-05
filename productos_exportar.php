@@ -3,7 +3,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "logincrud10";
+    $dbname = "paqueteriabsf";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -32,8 +32,8 @@
     echo "N. de Gia\t";
     echo "Fecha \t";
     echo "Paqueteria \t ";
-    echo "Nombre del titular \t";
     echo "Direccion \t";
+    echo "Nombre del titular \t";
     echo "Orientacion \t";
     echo "comentarios \t ";
     echo "estatus \t";
@@ -50,6 +50,6 @@
 
     // Cerrar la conexión a la base de datos
     $conn->close();
-    "<script>window.location= 'productos_tabla.php'</script>";
+    echo "<script>window.location= 'productos_tabla.php?pag=$pagina'</script>";
 ?>
 

@@ -36,4 +36,3 @@ if(isset($_POST["subir"])) {
     $conexion->close();
 }
 ?>
-

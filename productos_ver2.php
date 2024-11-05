@@ -1,11 +1,11 @@
-<!--En esta pagina podemos visualizar las caracteristicas del dato, pero sin poder modificar algo-->
+numeroguia<!--En esta pagina podemos visualizar las caracteristicas del dato, pero sin poder modificar algo-->
 <?php 
 	include("conexion.php");
 	include("datos_bsf.php");
 	$pagina = $_GET['pag'];
 	$id = $_GET['id'];
-//**************se realizo modificacion en la consulta */
-	$querybuscar = mysqli_query($conn, "SELECT pro.id,numeroguia,pro.fecha,pro.nombresocio,pro.direccion,pro.orientacion,pro.foto,pro.comentarios,pro.estatus,fecha_entrega,cat.nombre as categoria 
+
+	$querybuscar = mysqli_query($conn, "SELECT pro.id,numeroguia,fecha,pro.nombresocio,pro.direccion,pro.orientacion,foto,comentarios,estatus,fecha_entrega,cat.nombre as categoria 
 	FROM productos pro, categoria_productos cat where pro.categoria_id=cat.id and pro.id = '$id'");
 	
 	while($mostrar = mysqli_fetch_array($querybuscar)){
@@ -84,7 +84,7 @@
 					<tr> 
 				
 						<td colspan="2">
-							<?php echo "<a class='BotonesTeam' href=\"datos_bsf.php?pag=$pagina\">Regresar</a>";?><!--***************se realizo modificacion**************-->
+							<?php echo "<a class='BotonesTeam' href=\"datos_bsf.php?pag=$pagina\">Regresar</a>";?>
 						</td>
 					</tr>
 				</table>
@@ -92,4 +92,3 @@
 		</div>
 	</body>
 </html>
-

@@ -9,4 +9,3 @@
     header("Location:productos_tabla.php?pag=$pagina");
 
 ?>
-

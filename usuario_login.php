@@ -15,4 +15,3 @@
         echo "<script> alert('Usuario no existe');window.location= 'index.php' </script>";
     }
 ?>
-

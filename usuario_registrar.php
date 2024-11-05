@@ -14,4 +14,3 @@
         echo "<script> alert('Usuario registrado con exito: $nombre'); window.location='index.php' </script>";
     }
 ?>
-
