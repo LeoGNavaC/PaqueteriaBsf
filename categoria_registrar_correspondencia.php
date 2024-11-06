@@ -26,7 +26,7 @@
 					<tr><!--Boton para poder confirmar--> 	
 						<td colspan="2" >
 							<?php echo "<a class='BotonesTeam' href=\"categoria_tabla_correspondencia.php?pag=$pagina\">Cancelar</a>";?>&nbsp;<!--***********Se realizo modificacion*******-->
-							<input class='BotonesTeam' type="submit" name="btnregistrar" value="Registrar" onClick="javascript: return confirm('¿Deseas registrar esta categoría?');">
+							<input class='BotonesTeam' type="submit" name="btnregistrar" value="Registrar">
 						</td>
 					</tr>
 				</table>
