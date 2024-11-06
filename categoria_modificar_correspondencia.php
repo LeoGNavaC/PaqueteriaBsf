@@ -33,7 +33,7 @@
 				
                         <td colspan="2"><!--Se encuentran los botones-->
                             <?php echo "<a class='BotonesTeam' href=\"categoria_tabla_correspondencia.php?pag=$pagina\">Cancelar</a>";?>&nbsp;<!--*******Se realizo modificacion***-->
-                            <input class="BotonesTeam" type="submit" name="btnmodificar" value="Modificar" onClick="javascript: return confirm('¿Deseas modificar esta categoría?');">
+                            <input class="BotonesTeam" type="submit" name="btnmodificar" value="Modificar">
                         </td>
                     </tr>
                 </table>
