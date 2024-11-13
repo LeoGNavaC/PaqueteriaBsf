@@ -7,7 +7,7 @@
 
 	// Consulta segura para obtener datos del producto
 	$querybuscar = $conn->prepare("SELECT pro.id, pro.nombre, numeroguia, fecha, pro.paque, pro.nombresocio, pro.direccion, pro.orientacion, foto_nombre, foto, comentarios, pro.categoria_id, cat.nombre as categoria 
-	FROM productos pro JOIN categoria_productos cat ON pro.categoria_id=cat.id WHERE pro.id = ?");
+	FROM productos pro JOIN categoria_productos cat ON pro.categoria_id = cat.id WHERE pro.id = ?");
 	$querybuscar->bind_param("i", $id);
 	$querybuscar->execute();
 	$result = $querybuscar->get_result();
