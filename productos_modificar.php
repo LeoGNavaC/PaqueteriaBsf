@@ -260,7 +260,7 @@
 
 						<td colspan="2" >
 							<?php echo "<a class='BotonesTeam' href=\"productos_tabla.php?pag=$pagina\">Cancelar</a>";?>&nbsp;
-							<input class='BotonesTeam' type="submit" name="btnregistrar" value="Modificar" onClick="javascript: return confirm('¿Deseas modificar este producto');">
+							<input class='BotonesTeam' type="submit" name="btnregistrar" value="Modificar">
 						</td>
 					</tr>
 				</table>

@@ -234,7 +234,7 @@
         $stmt->bind_param("ssssssss", $pronom, $prodes, $propre, $propaq, $pronomso, $prodir, $proori, $procom);
 
         if ($stmt->execute()) {
-            echo "<script> alert('Producto registrado con exito: $pronom'); window.location='productos_tabla_correspondencia.php'  </script>";
+            echo "<script>window.location='productos_tabla_correspondencia.php'  </script>";
         } else {
             echo "<script> alert('Error al registrar el producto: ".$stmt->error."'); window.location='productos_tabla_correspondencia.php'  </script>";
         }
