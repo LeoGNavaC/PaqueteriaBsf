@@ -12,8 +12,6 @@
     $pagina = $_GET['pag'];
     $id = $_GET['id'];
 
-    //$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.numeroguia,pro.fecha,pro.nombresocio,pro.direccion,pro.orientacion,cat.nombre AS categoria FROM productos pro, categoria_productos cat WHERE pro.categoria_id=cat.id ORDER BY pro.id DESC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);
-    // Consulta para obtener los datos del producto **********************+ realizo modificacion en la consulta
     $querybuscar = mysqli_query($conn, "SELECT p.id, p.nombresocio, p.numeroguia, p.estatus, p.receptor, cp.nombre AS categoria FROM productos p, categoria_productos cp WHERE p.id = '$id' AND p.categoria_id = cp.id"); //*******se realizo modificacion */
     
     while($mostrar = mysqli_fetch_array($querybuscar)){    
@@ -22,7 +20,6 @@
         $prodes     = $mostrar['numeroguia'];
         $procat     = $mostrar['categoria'];
         $proest     = $mostrar['estatus'];
-        //$proent     = $mostrar['fecha_entrega'];//****************se realizo modificacion */
         $prorec     = $mostrar['receptor'];
     }
 ?>
@@ -42,7 +39,7 @@
 
                     <tr> 
                         <td><b>N°Guía: </b></td>
-                        <td><?php echo $prodes;?></td>
+                        <td><input class="CajaTexto" type="text" name="gia" value="<?php echo $prodes;?>" readonly></td>
                     </tr>
 
                     <tr> 
@@ -63,13 +60,6 @@
                         <td><b>Nombre del receptor: </b></td>
                         <td><textarea class="CajaTexto" type="text" name="receptor" style="width: 283px; height: 40px;" required><?php echo $prorec;?></textarea></td>
                     </tr>      
-                    
-                    <!-- ***********************se realizo modificacion
-                    <tr> 
-                        <td><b>Fecha/Entrega: </b></td>
-                        <td><input class="CajaTexto" type="datetime-local" step="any" name="fecha" value="<?php //echo $proent; ?>" required ></td>
-                    </tr>
-                    -->
 
                     <tr style="display: none;">
                         <td><b>Correo</b></td>
@@ -102,14 +92,13 @@
     if(isset($_POST['btnregistrar'])){
 
         /* Tome la fecha de la region */
-        date_default_timezone_set('America/Mexico_City');//*****************se realizo modificacion */
+        date_default_timezone_set('America/Mexico_City');
 
         $proid1     = $_POST['id'];    
         $proest1    = $_POST['fue'];
-        $proent1    = date("Y-m-d H:i:s");//*******************Se realizo una modificacion
+        $proent1    = date("Y-m-d H:i:s");
         $procorreoS = $_POST['email']; // correo del socio
-        $prodes1    = $_POST['gia'];
-        $procat1    = $_POST['paque'];
+        $prodes1    = mysqli_real_escape_string($conn, $_POST['gia']);
         $prorec1    = $_POST['receptor'];
         
         // Cuerpo del correo
@@ -149,7 +138,7 @@
         }
 
         // Actualización en la base de datos
-        $querymodificar = mysqli_query($conn, "UPDATE productos SET numeroguia='$prodes', paque='$procat', estatus='$proest1', fecha_entrega='$proent1', receptor='$prorec1' WHERE id = '$proid1'");
+        $querymodificar = mysqli_query($conn, "UPDATE productos SET numeroguia='$prodes1', paque='$procat', estatus='$proest1', fecha_entrega='$proent1', receptor='$prorec1' WHERE id = '$proid1'");
         echo "<script>window.location= 'datos_bsf.php?pag=$pagina' </script>";//************se realizo modificacion */
     }
 ?>
