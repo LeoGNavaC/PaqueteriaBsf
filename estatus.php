@@ -47,7 +47,7 @@
                         <td><?php echo $procat;?></td>
                     </tr>
 
-                    <tr>
+                    <tr style="display: none;">
                         <td><b>Fue: </b></td>
                         <td>
                             <select name="fue" class="CajaTexto">
