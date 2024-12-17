@@ -19,17 +19,15 @@
 					$pagina = 1;
 				}
 	
-				if(isset($_POST['btnbuscar'])){//se realizo modificacion en la consulta
+				if(isset($_POST['btnbuscar'])){
 					$buscar = $_POST['txtbuscar'];
 					$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.nombre,pro.numeroguia,pro.fecha,pro.paque,pro.nombresocio,pro.direccion,pro.orientacion,pro.foto_nombre,pro.comentarios,cat.nombre as categoria 
 					FROM productos pro INNER JOIN categoria_productos cat ON pro.categoria_id=cat.id WHERE pro.direccion LIKE '%".$buscar."%' OR pro.numeroguia LIKE '%".$buscar."%'");//se realizo modificacion
 				}
-				else{//se realizo modificacion en la consulta
+				else{
 					$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.nombre,pro.numeroguia,pro.fecha,pro.paque,pro.nombresocio,pro.direccion,pro.orientacion,pro.foto_nombre,pro.comentarios,cat.nombre as categoria 
 					FROM productos pro, categoria_productos cat WHERE pro.categoria_id=cat.id ORDER BY pro.id DESC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);//se realizo modificacion
 				}
-
-				
 	
 				$resultadoMaximo = mysqli_query($conn, "SELECT count(*) as num_productos FROM productos");
 	
