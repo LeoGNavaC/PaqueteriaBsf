@@ -12,7 +12,7 @@
     $pagina = $_GET['pag'];
     $id = $_GET['id'];
 
-    $querybuscar = mysqli_query($conn, "SELECT p.id, p.nombresocio, p.numeroguia, p.estatus, p.receptor, cp.nombre AS categoria FROM productos p, categoria_productos cp WHERE p.id = '$id' AND p.categoria_id = cp.id"); //*******se realizo modificacion */
+    $querybuscar = mysqli_query($conn, "SELECT p.id, p.nombresocio, p.numeroguia, p.estatus, p.receptor, cp.nombre AS categoria FROM productos p, categoria_productos cp WHERE p.id = '$id' AND p.categoria_id = cp.id"); 
     
     while($mostrar = mysqli_fetch_array($querybuscar)){    
         $proid      = $mostrar['id'];
@@ -57,6 +57,20 @@
                     </tr>
 
                     <tr>
+                        <td><b>Lo entrego</b></td>
+                        <td>
+                            <select name="repartidor" class="CajaTexto">
+                                <?php
+                                    $qrrepartidor = mysqli_query($conn,"SELECT nom FROM usuarios");
+                                    while($mostrarre = mysqli_fetch_array($qrrepartidor)){
+                                        echo '<option>' . $mostrarre['nom'] . '</option>';
+                                    }
+                                ?>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
                         <td><b>Nombre del receptor: </b></td>
                         <td><textarea class="CajaTexto" type="text" name="receptor" style="width: 283px; height: 40px;" required><?php echo $prorec;?></textarea></td>
                     </tr>      
@@ -79,7 +93,7 @@
                     <tr>
                         <td colspan="2" >
                             <input class='BotonesTeam' type="submit" name="btnregistrar" value="Aceptar">
-                            <?php echo "<a class='BotonesTeam' href=\"datos_bsf.php?pag=$pagina\">Cancelar</a>";?>&nbsp;<!--**********Se realizo modificacion****-->
+                            <?php echo "<a class='BotonesTeam' href=\"datos_bsf.php?pag=$pagina\">Cancelar</a>";?>&nbsp;
                         </td>
                     </tr>
                 </table>
@@ -96,6 +110,7 @@
 
         $proid1     = $_POST['id'];    
         $proest1    = $_POST['fue'];
+        $proresi1   = $_POST['repartidor'];
         $proent1    = date("Y-m-d H:i:s");
         $procorreoS = $_POST['email']; // correo del socio
         $prodes1    = mysqli_real_escape_string($conn, $_POST['gia']);
@@ -138,7 +153,7 @@
         }
 
         // Actualización en la base de datos
-        $querymodificar = mysqli_query($conn, "UPDATE productos SET numeroguia='$prodes1', paque='$procat', estatus='$proest1', fecha_entrega='$proent1', receptor='$prorec1' WHERE id = '$proid1'");
-        echo "<script>window.location= 'datos_bsf.php?pag=$pagina' </script>";//************se realizo modificacion */
+        $querymodificar = mysqli_query($conn, "UPDATE productos SET repartidorEn='$proresi1',numeroguia='$prodes1', paque='$procat', estatus='$proest1', fecha_entrega='$proent1', receptor='$prorec1' WHERE id = '$proid1'");
+        echo "<script>window.location= 'datos_bsf.php?pag=$pagina' </script>";
     }
 ?>
