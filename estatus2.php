@@ -1,21 +1,18 @@
 <?php 
 	include("conexion.php");
-	include("datos_bsf.php");//***************se realizo modificacion */
+	include("datos_bsf.php");
 
 	use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\Exception;
-
 
 	require 'PHPMailer/Exception.php';
 	require 'PHPMailer/PHPMailer.php';
 	require 'PHPMailer/SMTP.php';
 
-
 	$pagina = $_GET['pag'];
 	$id = $_GET['id'];
 
-	//$querybuscar = mysqli_query($conn, "SELECT id, nombresocio, numeroguia, paque, estatus, fecha_entrega FROM productos WHERE id = '$id'");//***********se realizo modificacion */
-	$querybuscar = mysqli_query($conn, "SELECT p.id, p.nombresocio, p.numeroguia, p.estatus, cp.nombre AS categoria FROM productos p, categoria_productos cp WHERE p.id = '$id' AND p.categoria_id = cp.id"); //*******se realizo modificacion */
+	$querybuscar = mysqli_query($conn, "SELECT p.id, p.nombresocio, p.numeroguia, p.estatus, cp.nombre AS categoria FROM productos p, categoria_productos cp WHERE p.id = '$id' AND p.categoria_id = cp.id"); 
 	
 	while($mostrar = mysqli_fetch_array($querybuscar)){	
 		$proid 		= $mostrar['id'];
@@ -23,8 +20,6 @@
 		$prodes	    = $mostrar['numeroguia'];
 		$procat	    = $mostrar['categoria'];
 		$proest		= $mostrar['estatus'];
-		//$proent		= $mostrar['fecha_entrega'];
-		
 	}
 ?>
 
@@ -42,49 +37,52 @@
 						</tr>
 
 						<tr> 
-						<td><b>N°Guía: </b></td>
-						<td><?php echo $prodes;?></td>
+							<td><b>N°Guía: </b></td>
+							<td><input class="CajaTexto" type="text" name="gia" value="<?php echo $prodes;?>" readonly></td>
 						</tr>
 
-					<tr> 
-						<td><b><Param>Paqueteria</Param>: </b></td>
-						<td><?php echo $procat;?></td>
-					</tr>
+						<tr> 
+							<td><b><Param>Paqueteria</Param>: </b></td>
+							<td><?php echo $procat;?></td>
+						</tr>
 
-					<tr>
-    					<td><b>Escribe: </b></td>
-						<td><textarea class="CajaTexto" type="text" name="fue" style="width: 283px; height: 90px;"  required><?php echo $proest;?></textarea></td>
-						<!--<td><input class="CajaTexto" type="text" name="txtest" value="<?php /*echo $proest;*/ ?>" style="width: 390px; height: 204px;" required></td>-->
-					</tr>							
+						<tr>
+							<td><b>Lo entrego</b></td>
+							<td>
+								<select name="repartidor" class="CajaTexto">
+									<?php
+										$qrrepartidor = mysqli_query($conn,"SELECT nom FROM usuarios");
+										while($mostrarre = mysqli_fetch_array($qrrepartidor)){
+											echo '<option>' . $mostrarre['nom'] . '</option>';
+										}
+									?>
+								</select>
+							</td>
+						</tr>
 
-					<!--**********++se realizo modificacion
-					<tr> 
-						<td><b>Fecha/No entregado: </b></td>
-						<td><input class="CajaTexto" type="datetime-local" step="any" name="fecha" value="<?php echo $proent; ?>" required ></td>
-					</tr>
-					-->
+						<tr>
+							<td><b>Escribe: </b></td>
+							<td><textarea class="CajaTexto" type="text" name="fue" style="width: 283px; height: 90px;"  required><?php echo $proest;?></textarea></td>
+						</tr>							
 
-					<tr style="display: none">
-						<td><b>Correo</b></td>
-						<td>
-							<input type="text" name="txtresiprueba" class="CajaTexto" value="<?php echo $pronomso; ?>" readonly>
-							<select name="email" class='CajaTexto' style="display:none" readonly>
-								<?php
-									$qrcategoria = mysqli_query($conn,"SELECT * FROM residentes WHERE name = '$pronomso'");
-									while($mostrarresi = mysqli_fetch_array($qrcategoria)){
-										echo '<option>' . $mostrarresi['email'] . '</option>';
-									}
-								?>
-							</select>
-						</td>
-					</tr>
+						<tr style="display: none">
+							<td><b>Correo</b></td>
+							<td>
+								<input type="text" name="txtresiprueba" class="CajaTexto" value="<?php echo $pronomso; ?>" readonly>
+								<select name="email" class='CajaTexto' style="display:none" readonly>
+									<?php
+										$qrcategoria = mysqli_query($conn,"SELECT * FROM residentes WHERE name = '$pronomso'");
+										while($mostrarresi = mysqli_fetch_array($qrcategoria)){
+											echo '<option>' . $mostrarresi['email'] . '</option>';
+										}
+									?>
+								</select>
+							</td>
+						</tr>
 
 						<td colspan="2" >
 							<input class='BotonesTeam' type="submit" name="btnregistrar" value="Aceptar">
-							<?php echo "<a class='BotonesTeam' href=\"datos_bsf.php?pag=$pagina\">Cancelar</a>";?>&nbsp;<!--************Se realizo modificacion******-->
-							
-<!--Crear la ventana para envíar el correo al residente-->
-							
+							<?php echo "<a class='BotonesTeam' href=\"datos_bsf.php?pag=$pagina\">Cancelar</a>";?>&nbsp;
 						</td>
 					</tr>
 				</table>
@@ -97,13 +95,13 @@
 		
 		if(isset($_POST['btnregistrar'])){
 			$proid1 	= $_POST['id'];    
-			$proest1	= $_POST['fue']; // Cambié la variable $proest a $proest1
+			$proest1	= $_POST['fue']; 
 			$proent1	= date("Y-m-d H:i:s");
-			$procorreoS = $_POST['email']; //correo de los socios
-			$prodes1 = $_POST['gia'];
+			$procorreoS = $_POST['email']; 
+			$prodes1 = mysqli_real_escape_string($conn, $_POST['gia']);
 			$procat1 = $_POST['paque'];
+			$prorec1 = $_POST['repartidor'];
 			
-			//$procuerpoCorreo	= "Para: $procorreoS" . "\t\n" . " Su Id: $proid1" . " Fue: $proest1" . " Fecha: $proent1" . phpversion(); //Cuerpo del correo
 			$procuerpoCorreo  = "<p style='background-color: #2424ec; color: #333; font-family: 'Georgia', serif; font-size: 18px; line-height: 1.6; padding: 10px; border-left: 30px solid #6fb119; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin: 20px 0;'><strong style='color: #b45508;'><em><u>Para:</u></em></strong>              $procorreoS </p>";
 			$procuerpoCorreo .= "<p style='background-color: #f4f4f9; color: #333; font-family: 'Georgia', serif; font-size: 18px; line-height: 1.6; padding: 10px; border-left: 10px solid #6fb119; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin: 20px 0;'><strong style='color: #b45508;'><em><u>Id de seguimiento:</u></em></strong> $proid1 </p>";
 			$procuerpoCorreo .= "<p style='background-color: #f4f4f9; color: #333; font-family: 'Georgia', serif; font-size: 18px; line-height: 1.6; padding: 10px; border-left: 10px solid #6fb119; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin: 20px 0;'><strong style='color: #b45508;'><em><u>Número de guía:</u></em></strong>    $prodes </p>";
@@ -137,8 +135,8 @@
 				echo "Error al enviar el correo: " . $mail->ErrorInfo;
 			}
 	
-			$querymodificar = mysqli_query($conn, "UPDATE productos SET numeroguia='$prodes',paque='$procat',estatus='$proest1',fecha_entrega='$proent1' WHERE id = '$proid1'");
-			echo "<script>window.location= 'datos_bsf.php?pag=$pagina' </script>";//***************Se realizo modificacion */
+			$querymodificar = mysqli_query($conn, "UPDATE productos SET repartidorEn='$prorec1',numeroguia='$prodes1',paque='$procat',estatus='$proest1',fecha_entrega='$proent1' WHERE id = '$proid1'");
+			echo "<script>window.location= 'datos_bsf.php?pag=$pagina' </script>";
 		}
 	?>
 
