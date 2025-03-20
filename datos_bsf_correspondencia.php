@@ -26,14 +26,14 @@
 					$sqlbus->bind_param("ss",$parambus,$parambus);
 					$sqlbus->execute();*/
 					$buscar = $_POST['txtbuscar'];
-					$sqlusu = mysqli_query($conn, "SELECT id,nombre,numeroguia,fecha,paque,nombresocio,direccion,orientacion,comentarios,estatus,fecha_entrega FROM productos_correspondencia WHERE numeroguia LIKE '%".$buscar."%' OR direccion LIKE '%".$buscar."%'");//***Se realizo modificacion */
+					$sqlusu = mysqli_query($conn, "SELECT id,nombre,repartidorEn,numeroguia,fecha,paque,nombresocio,direccion,orientacion,comentarios,estatus,fecha_entrega FROM productos_correspondencia WHERE numeroguia LIKE '%".$buscar."%' OR direccion LIKE '%".$buscar."%'");//***Se realizo modificacion */
 
 				}
 				else{//***********SE REALIZO MODIFICACION */
 					/*$sqlbus = $conn->prepare("SELECT id,nombre,numeroguia,fecha,paque,direccion,comentarios,estatus,fecha_entrega FROM productos_correspondencia ORDER BY id DESC LIMIT " .(($pagina - 1) * $filasmax) . "," . $filasmax);
 					$sqlbus->execute();
 					*/
-					$sqlusu = mysqli_query($conn, "SELECT id,nombre,numeroguia,fecha,paque,nombresocio,direccion,orientacion,comentarios,estatus,fecha_entrega FROM productos_correspondencia ORDER BY id DESC LIMIT " . (($pagina - 1) * $filasmax) . "," . $filasmax);//********Se realizo modificacion */
+					$sqlusu = mysqli_query($conn, "SELECT id,nombre,repartidorEn,numeroguia,fecha,paque,nombresocio,direccion,orientacion,comentarios,estatus,fecha_entrega FROM productos_correspondencia ORDER BY id DESC LIMIT " . (($pagina - 1) * $filasmax) . "," . $filasmax);//********Se realizo modificacion */
 					
 				}	
 	
@@ -71,6 +71,7 @@
 							<th>Comentarios</th>
 							<th>Estatus</th>
 							<th>Fecha/entrega</th>
+							<th>Repartidor que entrego</th>
 							<th>Acción</th>
 						</tr>
 		
@@ -99,6 +100,7 @@
 									}
 									//echo "<td style='width:50%'>".$mostrar['estatus']."</td>";
 									echo "<td>".$mostrar['fecha_entrega']."</td>";
+									echo "<td>".$mostrar['repartidorEn']."</td>";
 									echo "<td style='width:25%'>
 										<a class='BotonesTeam2' href=\"estatus_correspondencia.php?id=$mostrar[id]&pag=$pagina\">&#x2714;</a>
 										<!--<a class='BotonesTeam3' href=\"estatus2_correspondencia.php?id=$mostrar[id]&pag=$pagina\">&#x2718;</a>-->
