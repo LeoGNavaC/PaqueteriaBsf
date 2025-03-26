@@ -5,8 +5,8 @@
     $pagina = $_GET['pag'];
     $id = $_GET['id'];
 
-    mysqli_query($conn, "DELETE FROM productos_correspondencia WHERE id='$id'");//**********Se realizo modificacion */
-    header("Location:productos_tabla_correspondencia.php?pag=$pagina");//******************Se relizo modificacion */
+    mysqli_query($conn, "DELETE FROM productos_correspondencia WHERE id='$id'");
+    header("Location:productos_tabla_correspondencia.php?pag=$pagina");
 
 ?>
 

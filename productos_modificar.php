@@ -91,8 +91,6 @@
 						</td>
 					</tr>
 
-					<!--******************************************************++Se realizo la modificacion-->
-
 					<tr> 
 						<td><b>N° Guía: </b></td>
 						<td><input class="CajaTexto" type="text" name="txtdes" value="<?php echo $prodes;?>" required></td>
@@ -205,12 +203,10 @@
 										miVid.style.display = "block";//con esto lo muestro
 										miCan.style.display = "block";
 										miBot.style.display = "block";
-										//alert('Holaaaaaaaa siiii');
 									} else {
 										miVid.style.display = "none";//con esto lo muestro
 										miCan.style.display = "none";
 										miBot.style.display = "none";
-										//alert('holaaaaaaaa nooooo');
 									}
 								}
 							</script>
@@ -318,13 +314,13 @@
 		if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['opcion'] == 'Si') {
 
 			//Ajustamos la hora
-			date_default_timezone_set('America/Mexico_City');//*****************************Se realizo modificacion
+			date_default_timezone_set('America/Mexico_City');
 
 			// Variables del formulario
 			$proid1 = $_POST['txtid'];
 			$pronom1 = $_POST['txtnom'];
 			$prodes1 = $_POST['txtdes'];
-			$propre1 = date("Y-m-d H:i:s"); // fecha *******************************se realizo modificacion
+			$propre1 = date("Y-m-d H:i:s"); // fecha
 			$propaquete1 = $_POST['txtcat']; // paquete
 	
 			// Validación de nombre del socio y dirección
@@ -370,13 +366,13 @@
 		} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['opcion'] == 'No') {
 
 			//Ajustamos la hora
-			date_default_timezone_set('America/Mexico_City'); //*********************se realizo modificacion */
+			date_default_timezone_set('America/Mexico_City');
 
 			// Variables del formulario
 			$proid1 = $_POST['txtid'];
 			$pronom1 = $_POST['txtnom'];
 			$prodes1 = $_POST['txtdes'];
-			$propre1 = date("Y-m-d H:i:s"); // fecha ************************se realizo modificacion
+			$propre1 = date("Y-m-d H:i:s"); // fecha
 			$propaquete1 = $_POST['txtcat']; // paquete
 	
 			// Validación de nombre del socio y dirección

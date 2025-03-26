@@ -1,6 +1,6 @@
 <?php 
 	include('conexion.php');
-	include("categoria_tabla_correspondencia.php");//*************Se realizo modificacion */
+	include("categoria_tabla_correspondencia.php");
 
 	$pagina = $_GET['pag'];
 ?>
@@ -25,7 +25,7 @@
 					</tr>
 					<tr><!--Boton para poder confirmar--> 	
 						<td colspan="2" >
-							<?php echo "<a class='BotonesTeam' href=\"categoria_tabla_correspondencia.php?pag=$pagina\">Cancelar</a>";?>&nbsp;<!--***********Se realizo modificacion*******-->
+							<?php echo "<a class='BotonesTeam' href=\"categoria_tabla_correspondencia.php?pag=$pagina\">Cancelar</a>";?>&nbsp;
 							<input class='BotonesTeam' type="submit" name="btnregistrar" value="Registrar">
 
 						</td>
@@ -41,13 +41,13 @@
 	{   
 		$vainom 	= $_POST['txtnom'];
 
-		$queryadd	= $conn->prepare("INSERT INTO categoria_productos_correspondencia(nombre) VALUES(?)");//*************Se realizo modificacion */
+		$queryadd	= $conn->prepare("INSERT INTO categoria_productos_correspondencia(nombre) VALUES(?)");
 		$queryadd->bind_param("s", $vainom);		
 		
 		if($queryadd->execute())
 		{
 			
-			echo "<script>window.location= 'categoria_tabla_correspondencia.php?pag=$pagina' </script>";//*************Se realizo modificacion */
+			echo "<script>window.location= 'categoria_tabla_correspondencia.php?pag=$pagina' </script>";
 			
 		}else
 		{
