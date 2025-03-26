@@ -81,12 +81,12 @@
     if(isset($_POST['btnregistrar'])){
 
         /* Tome la fecha de la region */
-        date_default_timezone_set('America/Mexico_City');//*****************se realizo modificacion */
+        date_default_timezone_set('America/Mexico_City');
 
         $proid1     = $_POST['id'];    
         $proest1    = $_POST['fue'];
-        $proent1    = date("Y-m-d H:i:s");//*******************Se realizo una modificacion
-        $procorreoS = $_POST['email']; // correo del socio
+        $proent1    = date("Y-m-d H:i:s");
+        $procorreoS = $_POST['email']; 
         $prodes1    = mysqli_real_escape_string($conn,$_POST['gia']);
         $procat1    = $_POST['paque'];
         $prorec1    = $_POST['receptor'];
@@ -94,6 +94,6 @@
 
         // Actualización en la base de datos
         $querymodificar = mysqli_query($conn, "UPDATE productos_correspondencia SET repartidorEn='$prore1', numeroguia='$prodes1', paque='$procat', estatus='$proest1', fecha_entrega='$proent1'  WHERE id = '$proid1'");
-        echo "<script>window.location= 'datos_bsf_correspondencia.php?pag=$pagina' </script>";//************se realizo modificacion */
+        echo "<script>window.location= 'datos_bsf_correspondencia.php?pag=$pagina' </script>";
     }
 ?>

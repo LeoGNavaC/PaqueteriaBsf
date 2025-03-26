@@ -49,7 +49,7 @@
     		<table>
 				<tr>
 					<th>Id</th>
-					<th>Nombre de la empresa</th><!--Se modifico-->
+					<th>Nombre de la empresa</th>
 					<th>Acción</th>
 				</tr>
  

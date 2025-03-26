@@ -102,8 +102,6 @@
 						</td>
 					</tr>
 
-					<!--******************************************************++Se realizo la modificacion-->
-
 					<tr> 
 						<td><b>N° Guía: </b></td>
 						<td><input class="CajaTexto" type="text" name="txtdes" value="<?php echo $prodes;?>"></td>
@@ -216,13 +214,13 @@
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 			//Ajustamos la hora
-			date_default_timezone_set('America/Mexico_City');//*****************************Se realizo modificacion
+			date_default_timezone_set('America/Mexico_City');
 
 			// Variables del formulario
 			$proid1 = $_POST['txtid'];
 			$pronom1 = $_POST['txtnom'];
 			$prodes1 = empty($_POST['txtdes']) ? $prodes : $_POST['txtdes'];
-			$propre1 = date("Y-m-d H:i:s"); // fecha *******************************se realizo modificacion
+			$propre1 = date("Y-m-d H:i:s"); // fecha
 			$propaquete1 = $_POST['txtcat']; // paquete
 	
 			// Validación de nombre del socio y dirección
@@ -248,11 +246,7 @@
 			}
 	
 			$stmt->close();
-
 			$conn->close();
-	
-			// Actualización de los nombres de las empresas en la tabla 'productos'
-			//$conn->query("UPDATE productos AS p JOIN categoria_productos AS cp ON p.categoria_id = cp.id SET p.paque = cp.nombre WHERE p.categoria_id = cp.id");
 		} 
 ?>
 
