@@ -24,7 +24,7 @@
 					$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.repartidorEn,pro.numeroguia,pro.fecha,pro.paque,pro.nombresocio,pro.direccion,pro.orientacion,pro.comentarios,pro.estatus,pro.fecha_entrega,pro.receptor,cat.nombre as categoria 
 					FROM productos pro INNER JOIN categoria_productos cat ON pro.categoria_id=cat.id WHERE pro.direccion LIKE '%".$buscar."%' OR pro.numeroguia LIKE '%".$buscar."%'");
 				}
-				else{//***********SE REALIZO MODIFICACION */
+				else{
 					$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.repartidorEn,pro.numeroguia,pro.fecha,pro.paque,pro.nombresocio,pro.direccion,pro.orientacion,pro.comentarios,pro.estatus,pro.fecha_entrega,pro.receptor,cat.nombre as categoria 
 					FROM productos pro, categoria_productos cat WHERE pro.categoria_id=cat.id ORDER BY pro.id DESC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);
 				}	

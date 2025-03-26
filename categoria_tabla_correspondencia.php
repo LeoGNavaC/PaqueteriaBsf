@@ -21,12 +21,12 @@
  				if(isset($_POST['btnbuscar'])){
 					$buscar = $_POST['txtbuscar'];
 
- 					$sqlcat = mysqli_query($conn, "SELECT * FROM categoria_productos_correspondencia where nombre = '".$buscar."'");//************se realizo modificacion */
+ 					$sqlcat = mysqli_query($conn, "SELECT * FROM categoria_productos_correspondencia where nombre = '".$buscar."'");
 				} else {
- 					$sqlcat = mysqli_query($conn, "SELECT * FROM categoria_productos_correspondencia ORDER BY id ASC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);//***********se realizo modificacion */
+ 					$sqlcat = mysqli_query($conn, "SELECT * FROM categoria_productos_correspondencia ORDER BY id ASC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);
 				}
  
-    			$resultadoMaximo = mysqli_query($conn, "SELECT count(*) as num_categorias FROM categoria_productos_correspondencia");//********Se realizo modificacion */
+    			$resultadoMaximo = mysqli_query($conn, "SELECT count(*) as num_categorias FROM categoria_productos_correspondencia");
  
     			$maxusutabla = mysqli_fetch_assoc($resultadoMaximo)['num_categorias'];
 	
@@ -42,14 +42,14 @@
 								<input class="CajaTextoBuscar" type="text" name="txtbuscar"  placeholder="Ingresar el nombre de la paquetería" autocomplete="off" >
 							</div>
 							<div style="float:right">
-								<?php echo "<a class='BotonesTeam5' href=\"categoria_registrar_correspondencia.php?pag=$pagina\">Agregar paquetería</a>";?><!--Se realizo modificacion********-->
+								<?php echo "<a class='BotonesTeam5' href=\"categoria_registrar_correspondencia.php?pag=$pagina\">Agregar paquetería</a>";?>
 							</div>
 						</div>
 				</form>
     		<table>
 				<tr>
 					<th>Id</th>
-					<th>Nombre de la empresa</th><!--Se modifico-->
+					<th>Nombre de la empresa</th>
 					<th>Acción</th>
 				</tr>
  
@@ -63,7 +63,7 @@
 					<a class='BotonesTeam1' href=\"categoria_ver_correspondencia.php?categoria=$mostrar[id]&pag=$pagina\">&#x1F50D;</a>
 					<a class='BotonesTeam2' href=\"categoria_modificar_correspondencia.php?categoria=$mostrar[id]&pag=$pagina\">&#128397;</a> 
 					<a class='BotonesTeam3' href=\"categoria_eliminar_correspondencia.php?categoria=$mostrar[id]&pag=$pagina\" onClick=\"return confirm('¿Estás seguro de eliminar la categoría $mostrar[nombre]?')\">&#10006;</a>
-					</td>";  //*****Se realizo modificacion */
+					</td>";  
 					}
 				?>
 
@@ -82,7 +82,7 @@
 				if (isset($_GET['pag'])) {
 					if ($_GET['pag'] > 1) {
  			?>
-			<a class="BotonesTeam4" href="categoria_tabla_correspondencia.php?pag=<?php echo $_GET['pag'] - 1; ?>">Anterior</a><!--*****Se realizo modificacion*-->
+			<a class="BotonesTeam4" href="categoria_tabla_correspondencia.php?pag=<?php echo $_GET['pag'] - 1; ?>">Anterior</a>
 			<?php
 					} else {
 			?>

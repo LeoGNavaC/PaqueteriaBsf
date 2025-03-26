@@ -27,11 +27,11 @@
 				if(isset($_POST['btnbuscar'])){
 					$buscar = $_POST['txtbuscar'];
 					$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.nombre,pro.numeroguia,pro.fecha,pro.paque,pro.nombresocio,pro.direccion,pro.orientacion,pro.comentarios,cat.nombre as categoria 
-					FROM productos pro INNER JOIN categoria_productos cat ON pro.categoria_id=cat.id WHERE pro.direccion LIKE '%".$buscar."%' OR pro.numeroguia LIKE '%".$buscar."%'");//se realizo modificacion
+					FROM productos pro INNER JOIN categoria_productos cat ON pro.categoria_id=cat.id WHERE pro.direccion LIKE '%".$buscar."%' OR pro.numeroguia LIKE '%".$buscar."%'");
 				}
 				else{
 					$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.nombre,pro.numeroguia,pro.fecha,pro.paque,pro.nombresocio,pro.direccion,pro.orientacion,pro.comentarios,cat.nombre as categoria 
-					FROM productos pro, categoria_productos cat WHERE pro.categoria_id=cat.id ORDER BY pro.id DESC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);//se realizo modificacion
+					FROM productos pro, categoria_productos cat WHERE pro.categoria_id=cat.id ORDER BY pro.id DESC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);
 				}
 	
 				$resultadoMaximo = mysqli_query($conn, "SELECT count(*) as num_productos FROM productos");
@@ -63,7 +63,7 @@
 							<th>N° Guía</th>
 							<th>Fecha:A/M/D </th>
 							<th>Paqueteria(empresa)</th>
-							<th>Nombre del titular</th><!--Se realizo modificacion-->
+							<th>Nombre del titular</th>
 							<th>Dirección</th>
 							<th>Orientacion</th>
 							<th>Comentarios</th>
