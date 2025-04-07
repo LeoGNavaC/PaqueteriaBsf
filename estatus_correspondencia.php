@@ -16,8 +16,12 @@
     }
 ?>
 
-<html>
-<meta charset='UTF-8'>
+<html lang="es">
+    <head>
+        <meta charset='UTF-8'>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="javascript/scriptECpc.js" defer></script>
+    </head>
     <body>
         <div class="caja_popup4">
             <form class="contenedor_popup3" method="POST">
@@ -46,7 +50,19 @@
                                 <option value="Entregado">Entregado</option>
                             </select>
                         </td>    
-                    </tr>     
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <label>Lo entrego: </label>
+                        </td>
+
+                        <td>
+                            <select id="select-repartidores" name="slt-repartidores">
+                                <option value="">Cargando...</option>
+                            </select>
+                        </td>
+                    </tr>
 
                     <tr>
                         <td colspan="2" >
@@ -65,18 +81,19 @@
     if(isset($_POST['btnregistrar'])){
 
         /* Tome la fecha de la region */
-        date_default_timezone_set('America/Mexico_City');//*****************se realizo modificacion */
+        date_default_timezone_set('America/Mexico_City');
 
         $proid1     = $_POST['id'];    
         $proest1    = $_POST['fue'];
-        $proent1    = date("Y-m-d H:i:s");//*******************Se realizo una modificacion
-        $procorreoS = $_POST['email']; // correo del socio
+        $proent1    = date("Y-m-d H:i:s");
+        $procorreoS = $_POST['email']; 
         $prodes1    = mysqli_real_escape_string($conn,$_POST['gia']);
         $procat1    = $_POST['paque'];
         $prorec1    = $_POST['receptor'];
+        $prore1     = $_POST['slt-repartidores'];
 
         // Actualización en la base de datos
-        $querymodificar = mysqli_query($conn, "UPDATE productos_correspondencia SET numeroguia='$prodes1', paque='$procat', estatus='$proest1', fecha_entrega='$proent1' WHERE id = '$proid1'");
-        echo "<script>window.location= 'datos_bsf_correspondencia.php?pag=$pagina' </script>";//************se realizo modificacion */
+        $querymodificar = mysqli_query($conn, "UPDATE productos_correspondencia SET repartidorEn='$prore1', numeroguia='$prodes1', paque='$procat', estatus='$proest1', fecha_entrega='$proent1'  WHERE id = '$proid1'");
+        echo "<script>window.location= 'datos_bsf_correspondencia.php?pag=$pagina' </script>";
     }
 ?>

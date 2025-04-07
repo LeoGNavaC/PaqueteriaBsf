@@ -4,9 +4,14 @@
 	include("barra_lateral.php");
 ?>
 
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Paquetería BSF</title>
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+		<title>Paquetería BSF</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="javascript/scriptEXpt.js"></script>
+	</head>
 	<body>
 		<div class="ContenedorPrincipal">	
 			<?php
@@ -22,11 +27,11 @@
 				if(isset($_POST['btnbuscar'])){
 					$buscar = $_POST['txtbuscar'];
 					$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.nombre,pro.numeroguia,pro.fecha,pro.paque,pro.nombresocio,pro.direccion,pro.orientacion,pro.comentarios,cat.nombre as categoria 
-					FROM productos pro INNER JOIN categoria_productos cat ON pro.categoria_id=cat.id WHERE pro.direccion LIKE '%".$buscar."%' OR pro.numeroguia LIKE '%".$buscar."%'");//se realizo modificacion
+					FROM productos pro INNER JOIN categoria_productos cat ON pro.categoria_id=cat.id WHERE pro.direccion LIKE '%".$buscar."%' OR pro.numeroguia LIKE '%".$buscar."%'");
 				}
 				else{
 					$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.nombre,pro.numeroguia,pro.fecha,pro.paque,pro.nombresocio,pro.direccion,pro.orientacion,pro.comentarios,cat.nombre as categoria 
-					FROM productos pro, categoria_productos cat WHERE pro.categoria_id=cat.id ORDER BY pro.id DESC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);//se realizo modificacion
+					FROM productos pro, categoria_productos cat WHERE pro.categoria_id=cat.id ORDER BY pro.id DESC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);
 				}
 	
 				$resultadoMaximo = mysqli_query($conn, "SELECT count(*) as num_productos FROM productos");
@@ -42,7 +47,7 @@
 					<div class="ContBuscar">
 						<div style="float: left;">
 							<a href="productos_tabla.php" class="BotonesTeam">Inicio</a>
-							<a href="productos_exportar.php" class="BotonesTeam">Exportar</a>
+							<a id="btnEXpt" class="BotonesTeam">Exportar</a>
 							<input class="BotonesTeam" type="submit" value="Buscar" name="btnbuscar">
 							<input class="CajaTextoBuscar" type="text" name="txtbuscar"  placeholder="Ingresar N° de guía o nombre del socio" autocomplete="off" >
 						</div>
@@ -58,7 +63,7 @@
 							<th>N° Guía</th>
 							<th>Fecha:A/M/D </th>
 							<th>Paqueteria(empresa)</th>
-							<th>Nombre del titular</th><!--Se realizo modificacion-->
+							<th>Nombre del titular</th>
 							<th>Dirección</th>
 							<th>Orientacion</th>
 							<th>Comentarios</th>

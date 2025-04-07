@@ -1,11 +1,11 @@
 <?php 
     include('conexion.php');
-    include("categoria_tabla_correspondencia.php");//*************Se realizo modificacion */
+    include("categoria_tabla_correspondencia.php");
 
     $pagina = $_GET['pag'];
     $id = $_GET['categoria'];
 
-    $querybuscar = mysqli_query($conn, "SELECT * FROM categoria_productos_correspondencia WHERE id = '$id'");//*******Se realizo modificacion */
+    $querybuscar = mysqli_query($conn, "SELECT * FROM categoria_productos_correspondencia WHERE id = '$id'");
     
     while($mostrar = mysqli_fetch_array($querybuscar))
     {
@@ -32,7 +32,7 @@
                         <tr>
 				
                         <td colspan="2"><!--Se encuentran los botones-->
-                            <?php echo "<a class='BotonesTeam' href=\"categoria_tabla_correspondencia.php?pag=$pagina\">Cancelar</a>";?>&nbsp;<!--*******Se realizo modificacion***-->
+                            <?php echo "<a class='BotonesTeam' href=\"categoria_tabla_correspondencia.php?pag=$pagina\">Cancelar</a>";?>&nbsp;
                             <input class="BotonesTeam" type="submit" name="btnmodificar" value="Modificar">
 
                         </td>
@@ -49,8 +49,8 @@
     $id 		= $_POST['txtid'];
     $nombre 	= $_POST['txtnombre'];
         
-    $querymodificar = mysqli_query($conn, "UPDATE categoria_productos_correspondencia SET nombre='$nombre' WHERE id = '$id'");//********Se realizo modificacion */
-    echo "<script>window.location= 'categoria_tabla_correspondencia.php?pag=$pagina' </script>";//********Se realizo modificacion */
+    $querymodificar = mysqli_query($conn, "UPDATE categoria_productos_correspondencia SET nombre='$nombre' WHERE id = '$id'");
+    echo "<script>window.location= 'categoria_tabla_correspondencia.php?pag=$pagina' </script>";
         
     }
 ?>

@@ -4,7 +4,7 @@
 	$pagina = $_GET['pag'];
 	$id 	= $_GET['categoria'];
 
-	$querybuscar = mysqli_query($conn, "SELECT * FROM categoria_productos_correspondencia WHERE id = '$id'");//********Se realizo modificacion****
+	$querybuscar = mysqli_query($conn, "SELECT * FROM categoria_productos_correspondencia WHERE id = '$id'");
 	
 	while($mostrar = mysqli_fetch_array($querybuscar)){
 		$catid	= $mostrar['id'];
@@ -30,7 +30,7 @@
 					<tr>
 				
 						<td colspan="2">
-							<?php echo "<a class='BotonesTeam' href=\"categoria_tabla_correspondencia.php?pag=$pagina\">Regresar</a>";?><!--Se realizo modificacion****-->
+							<?php echo "<a class='BotonesTeam' href=\"categoria_tabla_correspondencia.php?pag=$pagina\">Regresar</a>";?>
 						</td>
 					</tr>
 				</table>

@@ -5,7 +5,6 @@
 
     //Se colocan en este bloque todas las consultas que se realizan
     // Preparar consulta combinada
-    //****************Se realizo modificacion */
     $smt = $conn->prepare("
         SELECT 
             u.nom AS repartidor_nombre,
@@ -54,12 +53,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--<title>Agregar Datos</title> Se realizzo modificacion*****************-->
-        <!--<link type="text/css" rel="shortcut icon" href="assets/images/favicon.ico"/>-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-        <!--<link rel="stylesheet" href="assets/css/style.css">******Se realizo modificacion-->
         <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-        <!--<script defer src="foto.js"></script>*********Se realizo modificacion-->
     </head>
     <body>
         <div class="caja_popup2">
@@ -67,32 +62,17 @@
                 <table>
 
                     <tr>
-                        <th colspan="2">Agregar datos</th><!--**************se realizo modificacion-->
+                        <th colspan="2">Agregar datos</th>
                     </tr>
                     
                     <tr><!--esta es una modificacion, yo lo deje para ver si me daba el nombre del usuario-->
-                        <td><b>Nombre del repartidor: </b></td><!--Se realizo modificacion en todo el bloque-->
+                        <td><b>Nombre del repartidor: </b></td>
                         <td>
-                            <select name="txtnom" class="CajaTexto" required readonly><!--**********Se realizo modificacion-->
+                            <select name="txtnom" class="CajaTexto" required readonly>
                                 <?php 
                                     foreach ($repartidor_nombre as $nombre) {
                                         echo '<option>' . htmlspecialchars($nombre) . '</option>';
                                     }
-                                    /*
-                                    $smt = $conn->prepare(("SELECT nom FROM usuarios WHERE correo = ?"));//preparamos la consula
-                                    $smt -> bind_param("s", $_SESSION['usuarioingresando']);//Le asignamos la s debido a que es un string
-                                    $smt -> execute();//ejecutamos la consulta
-                                    $result = $smt -> get_result();//optenemos el resultado
-
-                                    if ($result -> num_rows > 0){//verificamos si hay algun resultado
-                                        while ($qrusuario = $result -> fetch_assoc()){//asociamos el resultado
-                                            echo $qrusuario['nom'];//obtenemos el nombre del Array
-                                            echo '<option>' . $qrusuario['nom'] . '</option>';
-                                        }
-                                    } else {
-                                        echo "Error, reportelo con sistemas: Correo; clsoporte3@cgcsf, Numero; 56 4161 0514 ";
-                                    }
-                                    $smt -> close();*/
                                 ?>
                             </select>
                         </td>
@@ -106,20 +86,11 @@
                     <tr>
                         <td><b>Empresa:</b></td>
                         <td>
-                            <select name="txtcat" class="CajaTexto" required><!--**********Se realizo modificacion-->
+                            <select name="txtcat" class="CajaTexto" required>
                                 <?php
                                     foreach ($categorias as $id => $nombre) {
                                         echo '<option value="' . htmlspecialchars($nombre) . '">' . htmlspecialchars($nombre) . '</option>';
                                     }
-                                    /*$qrcategoria = mysqli_query($conn, "SELECT nombre, id FROM categoria_productos");
-                                    while ($mostrarcat = mysqli_fetch_assoc($qrcategoria)) {//se realizo modificacion
-                                        echo '<option value="' . $mostrarcat['id'] . '">' . $mostrarcat['nombre'] . '</option>';
-                                    }*
-                                    /*
-                                    se utiliza las dos diferentes  mysqli_fetch_array y mysqli_fetch_assoc
-                                    el primero me trae el numero y el valor de donde se encuentra el array por ejemplo: 2 Leo, 5 Moy, numero en el array y el valor
-                                    el segundo solo me trae un solo valor, por ejemplo: Leo, Moy, omite el numero del arrar y solo trae el valor
-                                    */
                                 ?>
                             </select>
                         </td>
@@ -129,16 +100,11 @@
                         <td><b>Dirección </b></td>
                         <td>
                             <input list="residentesN" id="inputN" name="txtnomso" class="CajaTexto" required>
-                            <datalist id="residentesN"><!--***************Se realizo modificacion-->
+                            <datalist id="residentesN">
                                 <?php
                                     foreach ($residentes as $nombre_residente) {
                                         echo '<option value="' . htmlspecialchars($nombre_residente) . '">';
                                     }
-                                    /*
-                                    $qrcategoria = mysqli_query($conn, "SELECT name FROM residentes");
-                                    while ($mostrarresi = mysqli_fetch_assoc($qrcategoria)) {//se realizo modificacion 
-                                        echo '<option value="' . $mostrarresi['name'] . '">';
-                                    }*/
                                 ?>
                             </datalist>
                         </td>
@@ -170,17 +136,6 @@
                             </script>
                         </td>
                     </tr>
-<!--
-                    <tr>
-                        <td><b>Orientacion</b></td>
-                        <td>
-                            <select name="txtori" class="CajaTexto" required>
-                                <option></option>
-                                <option>Oriente</option>
-                                <option>Poniente</option>
-                            </select>
-                        </td>
-                    </tr>-->
 
                     <tr>
                         <td><b>Comentarios</b></td>
@@ -194,7 +149,7 @@
                             <?php
                             echo "<a class='BotonesTeam' href=\"productos_tabla_correspondencia.php?pag=$pagina\">Cancelar</a>";
                             ?>
-                            <input class='BotonesTeam' type="submit" name="btnregistrar" value="Registrar"> <!--onClick="return confirm('¿Deseas registrar estos datos?');" ****modificacion-->
+                            <input class='BotonesTeam' type="submit" name="btnregistrar" value="Registrar"> 
                         </td>
                     </tr>
 
@@ -208,12 +163,11 @@
     if (isset($_POST['btnregistrar'])) {
      
         //ajustamos la hora
-        date_default_timezone_set('America/Mexico_City');//*****************se realizo modificacion */
+        date_default_timezone_set('America/Mexico_City');
      
         $pronom = $_POST['txtnom'];
         $prodes = !empty($_POST['txtdes']) ? $_POST['txtdes'] : '';
-        $propre = date("Y-m-d H:i:s");//********************se realizo modificacion */
-        //$comparar = date("Y-m-d H:i");//*******pendiente leo, corregir que se meta solo la empresa */
+        $propre = date("Y-m-d H:i:s");
         $propaq = $_POST['txtcat'];
         $pronomso = $_POST['txtnomso'];
         $prodir = $_POST['txtdirec'];
@@ -240,11 +194,6 @@
         }
 
         $stmt->close();
-
-        // Considera agregar WHERE si solo deseas actualizar ciertas filas
-        //$conn->query("INSERT productos AS p JOIN categoria_productos AS cp ON p.categoria_id = cp.id SET p.paque = cp.nombre WHERE ' $propre ' = ' $comparar '");
-        //$conn->query("UPDATE productos AS p JOIN residentes AS r ON p.id_residentes = r.idresidentes SET p.nombresocio = r.name");//***********se realizo modificacion */
-
     } 
 ?>
 
