@@ -4,9 +4,15 @@
 	include("barra_lateral.php");
 ?>
 
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Paquetería BSF</title>
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="javascript/scriptEXdbc.js"></script>
+		<title>Paquetería BSF</title>
+	</head>
+
 	<body>
 		<div class="ContenedorPrincipal">	
 			<?php
@@ -41,7 +47,7 @@
 					<div class="ContBuscar">
 						<div style="float: left;">
 							<a href="datos_bsf_correspondencia.php" class="BotonesTeam">Inicio</a>
-							<a href="productos_exportar_correspondencia.php" class="BotonesTeam">Exportar</a>
+							<a id="btnEXdbc" class="BotonesTeam">Exportar</a>
 							<input class="BotonesTeam" type="submit" value="Buscar" name="btnbuscar">
 							<input class="CajaTextoBuscar" type="text" name="txtbuscar"  placeholder="Ingresar N° de guía o nombre del socio" autocomplete="off" >
 						</div>
